@@ -1,0 +1,2 @@
+# vagrant
+Vagrantfile管理
