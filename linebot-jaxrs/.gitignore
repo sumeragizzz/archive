@@ -1,1 +1,2 @@
-/target/
+/target/*
+!linebot-jaxrs.war
