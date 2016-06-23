@@ -1,2 +1,2 @@
 [config]
-command = cp %DEPLOYMENT_SOURCE%/site/repository/target/linebot-jaxrs.war %DEPLOYMENT_TARGET%/webapps/ROOT.war
+command = cp %DEPLOYMENT_SOURCE%\target\linebot-jaxrs.war %DEPLOYMENT_TARGET%\webapps\ROOT.war
