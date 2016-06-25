@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 
-namespace csharp_experiment.Experiment.CSharp.Lang.Linq
+namespace Experiment.CSharp.Lang.Linq
 
 {
     class FizzBuzzByLinq

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace csharp_experiment.Experiment.CSharp.Lang.Statement
+namespace Experiment.CSharp.Lang.Statement
 {
     public class FizzBuzzByStatement
     {
