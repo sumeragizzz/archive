@@ -4,6 +4,8 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Form;
 import javax.ws.rs.core.MediaType;
@@ -41,7 +43,7 @@ public class SampleResourceTest extends JerseyTest {
     }
 
     @Test
-    public void testGetForm() {
+    public void testPostForm() {
         String response = target("sample/form").request().post(
                 Entity.entity(new Form("param", "abc"), MediaType.APPLICATION_FORM_URLENCODED_TYPE), String.class);
         assertThat(response, is("abc"));
@@ -49,9 +51,65 @@ public class SampleResourceTest extends JerseyTest {
 
     @Test
     public void testGetJson() {
-        Person person = target("sample/json").request().get(Person.class);
-        assertThat(person.getFirstName(), is("Hello"));
-        assertThat(person.getLastName(), is("World!"));
+        Person response = target("sample/json").request().get(Person.class);
+        assertThat(response.getFirstName(), is("Hello"));
+        assertThat(response.getLastName(), is("World!"));
+    }
+
+    @Test
+    public void testPostJsonParam() {
+        Person person = new Person();
+        person.setFirstName("abc");
+        person.setLastName(null);
+        Entity<Person> entity = Entity.entity(person, MediaType.APPLICATION_JSON_TYPE);
+        Person response = target("sample/jsonparam").request().post(entity, Person.class);
+        assertThat(response.getFirstName(), is("abc"));
+        assertThat(response.getLastName(), nullValue());
+    }
+
+    @Test
+    public void testGetXml() {
+        Person response = target("sample/xml").request().get(Person.class);
+        assertThat(response.getFirstName(), is("Hello"));
+        assertThat(response.getLastName(), is("World!"));
+
+        System.out.println(target("sample/xml").request().get(String.class));
+    }
+
+    @Test
+    public void testPostJsonXml() {
+        Person json = new Person();
+        json.setFirstName("abc");
+        json.setLastName("def");
+        Entity<Person> jsonEntity = Entity.entity(json, MediaType.APPLICATION_JSON_TYPE);
+
+        Person xml = new Person();
+        xml.setFirstName("ghi");
+        xml.setLastName("jkl");
+        Entity<Person> xmlEntity = Entity.entity(xml, MediaType.APPLICATION_XML_TYPE);
+
+        WebTarget target = target("sample/jsonxml");
+        Invocation.Builder jsonInvocation = target.request(MediaType.APPLICATION_JSON_TYPE);
+        Invocation.Builder xmlInvocation = target.request(MediaType.APPLICATION_XML_TYPE);
+
+        Person jsonToJson = jsonInvocation.post(jsonEntity, Person.class);
+        Person xmlToJson = jsonInvocation.post(xmlEntity, Person.class);
+        Person jsonToXml = xmlInvocation.post(jsonEntity, Person.class);
+        Person xmlToXml = xmlInvocation.post(xmlEntity, Person.class);
+
+        assertThat(jsonToJson.getFirstName(), is("abc"));
+        assertThat(jsonToJson.getLastName(), is("def"));
+        assertThat(xmlToJson.getFirstName(), is("ghi"));
+        assertThat(xmlToJson.getLastName(), is("jkl"));
+        assertThat(jsonToXml.getFirstName(), is("abc"));
+        assertThat(jsonToXml.getLastName(), is("def"));
+        assertThat(xmlToXml.getFirstName(), is("ghi"));
+        assertThat(xmlToXml.getLastName(), is("jkl"));
+
+        System.out.println(jsonInvocation.post(jsonEntity, String.class));
+        System.out.println(jsonInvocation.post(xmlEntity, String.class));
+        System.out.println(xmlInvocation.post(jsonEntity, String.class));
+        System.out.println(xmlInvocation.post(xmlEntity, String.class));
     }
 
 }
