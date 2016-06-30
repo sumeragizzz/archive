@@ -28,7 +28,7 @@ public class CallbackResourceTest extends JerseyTest {
     public void testPostCallback() {
         Content content = new Content();
         content.setContentType(BigDecimal.ONE);
-        content.setFrom("from ID");
+        content.setFrom("fromID");
         content.setText("Hello World!");
         Result result = new Result();
         result.setContent(content);
