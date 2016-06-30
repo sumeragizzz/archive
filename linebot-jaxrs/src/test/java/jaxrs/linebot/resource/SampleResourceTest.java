@@ -4,7 +4,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.SyncInvoker;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Form;
@@ -89,13 +89,13 @@ public class SampleResourceTest extends JerseyTest {
         Entity<Person> xmlEntity = Entity.entity(xml, MediaType.APPLICATION_XML_TYPE);
 
         WebTarget target = target("sample/jsonxml");
-        Invocation.Builder jsonInvocation = target.request(MediaType.APPLICATION_JSON_TYPE);
-        Invocation.Builder xmlInvocation = target.request(MediaType.APPLICATION_XML_TYPE);
+        SyncInvoker jsonInvoker = target.request(MediaType.APPLICATION_JSON_TYPE);
+        SyncInvoker xmlInvoker = target.request(MediaType.APPLICATION_XML_TYPE);
 
-        Person jsonToJson = jsonInvocation.post(jsonEntity, Person.class);
-        Person xmlToJson = jsonInvocation.post(xmlEntity, Person.class);
-        Person jsonToXml = xmlInvocation.post(jsonEntity, Person.class);
-        Person xmlToXml = xmlInvocation.post(xmlEntity, Person.class);
+        Person jsonToJson = jsonInvoker.post(jsonEntity, Person.class);
+        Person xmlToJson = jsonInvoker.post(xmlEntity, Person.class);
+        Person jsonToXml = xmlInvoker.post(jsonEntity, Person.class);
+        Person xmlToXml = xmlInvoker.post(xmlEntity, Person.class);
 
         assertThat(jsonToJson.getFirstName(), is("abc"));
         assertThat(jsonToJson.getLastName(), is("def"));
@@ -106,10 +106,10 @@ public class SampleResourceTest extends JerseyTest {
         assertThat(xmlToXml.getFirstName(), is("ghi"));
         assertThat(xmlToXml.getLastName(), is("jkl"));
 
-        System.out.println(jsonInvocation.post(jsonEntity, String.class));
-        System.out.println(jsonInvocation.post(xmlEntity, String.class));
-        System.out.println(xmlInvocation.post(jsonEntity, String.class));
-        System.out.println(xmlInvocation.post(xmlEntity, String.class));
+        System.out.println(jsonInvoker.post(jsonEntity, String.class));
+        System.out.println(jsonInvoker.post(xmlEntity, String.class));
+        System.out.println(xmlInvoker.post(jsonEntity, String.class));
+        System.out.println(xmlInvoker.post(xmlEntity, String.class));
     }
 
 }
