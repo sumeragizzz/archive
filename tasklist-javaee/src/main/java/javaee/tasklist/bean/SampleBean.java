@@ -3,8 +3,8 @@ package javaee.tasklist.bean;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-@RequestScoped
 @Named
+@RequestScoped
 public class SampleBean {
 
     private String text;
@@ -13,12 +13,12 @@ public class SampleBean {
     }
 
     public String action1() {
-        setText("action1");
+        setText("action1a");
         return null;
     }
 
     public String action2() {
-        setText("action2");
+        setText("action2a");
         return null;
     }
 
