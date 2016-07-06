@@ -13,12 +13,12 @@ public class SampleBean {
     }
 
     public String action1() {
-        setText("action1a");
+        setText("action1");
         return null;
     }
 
     public String action2() {
-        setText("action2a");
+        setText("action2");
         return null;
     }
 
