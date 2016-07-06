@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:jsf="http://xmlns.jcp.org/jsf"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<head jsf:id="head">
+    <title>JSF Sample</title>
+</head>
+<body jsf:id="body">
+    <form jsf:id="form">
+        Title: <input type="text" jsf:value="#{taskListBean.registerTitle}" />
+        Memo: <input type="text" jsf:value="#{taskListBean.registerMemo}" />
+        <button jsf:action="#{taskListBean.register}">Register</button>
+    </form>
+    <table>
+        <tr>
+            <th>No</th>
+            <th>Title</th>
+            <th>Memo</th>
+        </tr>
+        <ui:repeat var="task" value="${taskListBean.taskList}" varStatus="status">
+        <tr>
+            <td>#{status.index + 1}</td>
+            <td>#{task.title}</td>
+            <td>#{task.memo}</td>
+        </tr>
+        </ui:repeat>
+    </table>
+</body>
+</html>
