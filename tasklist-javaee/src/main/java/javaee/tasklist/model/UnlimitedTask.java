@@ -1,8 +1,10 @@
 package javaee.tasklist.model;
 
-public class UnlimitedTask implements Task {
+import java.io.Serializable;
 
-    private int id;
+public class UnlimitedTask implements Task, Serializable {
+
+    private String id;
 
     private String title;
 
@@ -19,11 +21,11 @@ public class UnlimitedTask implements Task {
     }
 
     @Override
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

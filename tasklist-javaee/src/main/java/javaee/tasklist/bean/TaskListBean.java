@@ -1,17 +1,18 @@
 package javaee.tasklist.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import javaee.tasklist.model.Task;
 import javaee.tasklist.model.UnlimitedTask;
 
 @Named
-@RequestScoped
-public class TaskListBean {
+@SessionScoped
+public class TaskListBean implements Serializable {
 
     private String registerTitle;
 
@@ -21,16 +22,15 @@ public class TaskListBean {
 
     public TaskListBean() {
         taskList = new ArrayList<>();
-        // TODO テストデータ設定
-        taskList.add(new UnlimitedTask("AAA", "memoA"));
-        taskList.add(new UnlimitedTask("BBB", null));
-        taskList.add(new UnlimitedTask("CCC", "memoC"));
     }
 
     public String register() {
-        setRegisterTitle("registered : " + getRegisterTitle());
-        setRegisterMemo("registered : " + getRegisterMemo());
-//        registerTask(getRegisterTitle(), getRegisterMemo());
+        registerTask(getRegisterTitle(), getRegisterMemo());
+        return null;
+    }
+
+    public String delete(int index) {
+        taskList.remove(index);
         return null;
     }
 

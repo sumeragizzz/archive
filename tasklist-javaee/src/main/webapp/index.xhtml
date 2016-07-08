@@ -8,24 +8,28 @@
     <title>JSF Sample</title>
 </head>
 <body jsf:id="body">
-    <form jsf:id="form">
+    <form jsf:id="registerform">
         Title: <input type="text" jsf:value="#{taskListBean.registerTitle}" />
         Memo: <input type="text" jsf:value="#{taskListBean.registerMemo}" />
         <button jsf:action="#{taskListBean.register}">Register</button>
     </form>
+    <form jsf:id="listform">
     <table>
         <tr>
             <th>No</th>
             <th>Title</th>
             <th>Memo</th>
+            <th></th>
         </tr>
         <ui:repeat var="task" value="${taskListBean.taskList}" varStatus="status">
         <tr>
             <td>#{status.index + 1}</td>
             <td>#{task.title}</td>
             <td>#{task.memo}</td>
+            <td><button jsf:action="#{taskListBean.delete(status.index)}">Delete</button></td>
         </tr>
         </ui:repeat>
     </table>
+    </form>
 </body>
 </html>
