@@ -13,6 +13,13 @@
   </properties>
 
   <dependencies>
+    <!-- compile -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>1.4.192</version>
+    </dependency>
+
      <!-- provided -->
     <dependency>
       <groupId>javax</groupId>
