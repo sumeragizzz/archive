@@ -21,14 +21,12 @@
             <th>Memo</th>
             <th></th>
         </tr>
-        <ui:repeat var="task" value="${taskListBean.taskList}" varStatus="status">
-        <tr>
+        <tr jsfc="ui:repeat" value="${taskListBean.taskList}" var="task" varStatus="status">
             <td>#{status.index + 1}</td>
             <td>#{task.title}</td>
             <td>#{task.memo}</td>
             <td><button jsf:action="#{taskListBean.delete(status.index)}">Delete</button></td>
         </tr>
-        </ui:repeat>
     </table>
     </form>
 </body>

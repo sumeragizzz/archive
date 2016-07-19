@@ -2,12 +2,12 @@ package javaee.tasklist.model;
 
 public interface Task {
 
-    String getId();
+    int getId();
 
     String getTitle();
 
     String getMemo();
 
-    TaskStatus getStatus();
+    int getStatus();
 
 }
