@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 public class UnlimitedTask implements Task, Serializable {
 
-    private String id;
+    private long id;
 
     private String title;
 
     private String memo;
 
-    private TaskStatus status;
+    private int status;
 
     public UnlimitedTask() {
     }
@@ -20,12 +20,11 @@ public class UnlimitedTask implements Task, Serializable {
         this.memo = memo;
     }
 
-    @Override
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -47,12 +46,11 @@ public class UnlimitedTask implements Task, Serializable {
         this.memo = memo;
     }
 
-    @Override
-    public TaskStatus getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(TaskStatus status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

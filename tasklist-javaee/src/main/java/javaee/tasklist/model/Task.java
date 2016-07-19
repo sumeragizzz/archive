@@ -2,7 +2,7 @@ package javaee.tasklist.model;
 
 public interface Task {
 
-    int getId();
+    long getId();
 
     String getTitle();
 
