@@ -1,19 +1,17 @@
 package javaee.tasklist.bean;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import javaee.tasklist.model.Task;
-import javaee.tasklist.model.UnlimitedTask;
 
 @Named
 @SessionScoped
@@ -25,34 +23,42 @@ public class TaskListBean implements Serializable {
 
     private List<Task> taskList;
 
-    private DataSource dataSource;
+    private EntityManager em;
 
     public TaskListBean() {
-        taskList = new ArrayList<>();
     }
 
     @PostConstruct
     public void initialize() {
-        Context context;
-        try {
-            context = new InitialContext();
-            dataSource = (DataSource) context.lookup("java:comp/env/jdbc/datasource");
-        } catch (NamingException e) {
-        }
+        em = Persistence.createEntityManagerFactory("tasklist").createEntityManager();
+        selectTask();
     }
 
     public String register() {
         registerTask(getRegisterTitle(), getRegisterMemo());
+        selectTask();
         return null;
     }
 
     public String delete(int index) {
-        taskList.remove(index);
+        deleteTask(taskList.get(index));
+        selectTask();
         return null;
     }
 
+    private void selectTask() {
+        CriteriaQuery<Task> cq = em.getCriteriaBuilder().createQuery(Task.class);
+        Root<Task> r = cq.from(Task.class);
+        taskList = em.createQuery(cq.select(r)).getResultList();
+    }
+
     private void registerTask(String title, String memo) {
-        taskList.add(new UnlimitedTask(title, memo));
+        Task task = new Task(title, memo);
+        em.persist(task);
+    }
+
+    private void deleteTask(Task task) {
+        em.remove(task);
     }
 
     public String getRegisterTitle() {
