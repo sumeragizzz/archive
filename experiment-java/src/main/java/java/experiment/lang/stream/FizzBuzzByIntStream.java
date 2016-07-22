@@ -1,4 +1,4 @@
-package experiment.java.lang.stream;
+package java.experiment.lang.stream;
 
 import java.util.stream.IntStream;
 
