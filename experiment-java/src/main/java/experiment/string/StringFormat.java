@@ -1,4 +1,4 @@
-package java.experiment.string;
+package experiment.string;
 
 public class StringFormat {
 
