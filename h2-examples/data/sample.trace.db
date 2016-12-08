@@ -1,0 +1,4 @@
+2016-12-09 00:25:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: テーブル "SAMPLE" はすでに存在します
+Table "SAMPLE" already exists; SQL statement:
+create table sample (id decimal, value varchar) [42101-193]
