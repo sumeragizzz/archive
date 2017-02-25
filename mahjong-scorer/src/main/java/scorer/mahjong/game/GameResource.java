@@ -1,4 +1,4 @@
-package scorer.mahjong.resource;
+package scorer.mahjong.game;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
