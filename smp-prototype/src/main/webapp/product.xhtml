@@ -10,8 +10,15 @@
 </h:head>
 <h:body>
   <h:form>
-    <h:inputText value="#{productBean.productName}" />
+    <h:inputText value="#{productBean.name}" />
+    <h:outputText value="#{productBean.name}" />
+    <a href="#" onclick="func('#{productBean.name}');">link</a>
     <h:commandButton action="#{productBean.execute}" value="execute" />
   </h:form>
+  <script type="text/javascript">
+  function func(param) {
+	  alert(param);
+  }
+  </script>
 </h:body>
 </html>

@@ -3,7 +3,7 @@ package smp.prototype.product;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 @Named
@@ -21,12 +21,12 @@ public class ProductBean implements Serializable {
         return null;
     }
 
-    public String getValue() {
+    public String getName() {
         return name;
     }
 
-    public void setValue(String value) {
-        this.name = value;
+    public void setName(String name) {
+        this.name = name;
     }
 
 }
