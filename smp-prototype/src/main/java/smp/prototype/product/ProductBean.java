@@ -10,23 +10,24 @@ import javax.inject.Named;
 @ViewScoped
 public class ProductBean implements Serializable {
 
-    String name;
+    Product product;
 
     @PostConstruct
     public void init() {
+        product = new Product();
     }
 
     public String execute() {
-        name = name + "z";
+        product.setName(product.getName() + "z");
         return null;
     }
 
-    public String getName() {
-        return name;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
 }
