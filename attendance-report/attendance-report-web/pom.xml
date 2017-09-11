@@ -5,48 +5,39 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
+  <parent>
+    <groupId>attendance.report</groupId>
+    <artifactId>attendance-report-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../attendance-report-parent/pom.xml</relativePath>
+  </parent>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.jboss.arquillian</groupId>
-        <artifactId>arquillian-bom</artifactId>
-        <version>1.1.13.Final</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
   <dependencies>
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-web-api</artifactId>
-      <version>7.0</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.jmockit</groupId>
       <artifactId>jmockit</artifactId>
-      <version>1.33</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.8.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -57,7 +48,6 @@
     <dependency>
       <groupId>org.jboss.arquillian.container</groupId>
       <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
-      <version>1.0.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
