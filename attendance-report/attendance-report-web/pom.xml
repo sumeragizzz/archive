@@ -7,7 +7,7 @@
     <groupId>attendance.report</groupId>
     <artifactId>attendance-report-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../attendance-report-parent/pom.xml</relativePath>
+    <relativePath>../attendance-report-parent</relativePath>
   </parent>
 
   <properties>
