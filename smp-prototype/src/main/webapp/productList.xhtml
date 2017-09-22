@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+  <title>SNP-Prototype</title>
+</h:head>
+<h:body>
+  <div class="container">
+    <h:form>
+      <div class="form-group">
+        Name
+        <h:inputText styleClass="form-control" value="#{productBean.condition.name}" />
+        <h:commandButton value="add" class="btn" action="#{productBean.add}" />
+      </div>
+      <div class="form-group">
+      <table class="table">
+        <ui:repeat value="#{productBean.products}" var="product" varStatus="status">
+        <tr>
+          <td><h:outputText value="#{status.index + 1}" /></td>
+          <td><h:inputText styleClass="form-control" value="#{product.name}" /></td>
+          <td><h:commandButton value="edit" class="btn" action="#{productBean.edit(status.index)}" /></td>
+          <td><h:commandButton value="remove" class="btn" action="#{productBean.remove(status.index)}" /></td>
+        </tr>
+        </ui:repeat>
+      </table>
+      </div>
+    </h:form>
+  </div>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
+</h:body>
+</html>
