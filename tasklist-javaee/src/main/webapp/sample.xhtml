@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <head jsf:id="head">
+        <title>JSF Sample</title>
+    </head>
+    <body jsf:id="body">
+        <form jsf:id="form">
+            #{sampleBean.text}
+            <hr/>
+            <input type="submit" value="Action1" jsf:action="#{sampleBean.action1}" />
+            <input type="submit" value="Action2" jsf:action="#{sampleBean.action2}" />
+        </form>
+    </body>
+</html>
