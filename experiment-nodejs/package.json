@@ -1,0 +1,22 @@
+{
+  "name": "experiment-nodejs",
+  "version": "1.0.0",
+  "description": "experiment Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sumeragizzz/experiment-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sumeragizzz/experiment-nodejs/issues"
+  },
+  "homepage": "https://github.com/sumeragizzz/experiment-nodejs#readme",
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}
